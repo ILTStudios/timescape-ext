@@ -97,12 +97,12 @@ format_settings.addEventListener('click', () => {
 function update_options(value, setting){
     //time
     if(setting == 'time'){
-        var time_value = document.querySelector('.todo .time input').value;
-        console.log(time_value);
+        var time_value_todo = document.querySelector('.todo .time input').value;
+        var time_value_done = document.querySelector('.done .time input').value;
 
         if(value != 0){
-            //convert to 24
-            let [time, modifier] = time_value.split(' ');
+            //todo
+            let [time, modifier] = time_value_todo.split(' ');
             let [hours, minutes] = time.split(':');
             
             if(hours === '12'){
@@ -113,11 +113,24 @@ function update_options(value, setting){
 
             var twenty_four_hour = `${hours}:${minutes}`;
             document.querySelector('.todo .time > input').value = twenty_four_hour;
+
+            //done
+            [time, modifier] = time_value_done.split(' ');
+            [hours, minutes] = time.split(':');
+            
+            if(hours === '12'){
+                hours = '00';
+            }if(modifier === 'PM'){
+                hours = parseInt(hours, 10) + 12;
+            }
+
+            twenty_four_hour = `${hours}:${minutes}`;
+            document.querySelector('.done .time > input').value = twenty_four_hour;
         }
         else{
-            //convert to 12
-            var hours = time_value.split(':')[0];
-            var minutes = time_value.split(':')[1];
+            //todo
+            var hours = time_value_todo.split(':')[0];
+            var minutes = time_value_todo.split(':')[1];
             
             let AMorPM = 'AM';
             if(hours>12)AMorPM = 'PM';
@@ -125,6 +138,17 @@ function update_options(value, setting){
 
             var twelve_hour = `${hours}:${minutes} ${AMorPM}`;
             document.querySelector('.todo .time > input').value = twelve_hour;
+
+            //done
+            hours = time_value_done.split(':')[0];
+            minutes = time_value_done.split(':')[1];
+            
+            AMorPM = 'AM';
+            if(hours>12)AMorPM = 'PM';
+            hours = (hours%12);
+
+            twelve_hour = `${hours}:${minutes} ${AMorPM}`;
+            document.querySelector('.done .time > input').value = twelve_hour;
         }
 
         if(value != 0){

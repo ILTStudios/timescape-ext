@@ -120,7 +120,7 @@ body{
     font-family: 'Montserrat';
 }
 .done .time >input{
-    width: 36px;
+    width: 56px;
 }
 .done .timezone >input{
     width: 176px;
