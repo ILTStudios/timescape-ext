@@ -8,7 +8,6 @@ function changeTimeZone(date, timeZone) {
         }),
       );
     }
-  
     return new Date(
       date.toLocaleString('en-US', {
         timeZone,
@@ -36,6 +35,9 @@ const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 timezone_one.placeholder = `${timezone}`;
 timezone_one.value = `${timezone}`;
 
+//current date
+document.querySelector('.todo .date').textContent = `${new Date().toUTCString().slice(5, 16)}`;
+
 //changed time
 time_two.placeholder = `${changeTimeZone(new Date(), 'America/Los_Angeles')}`
 time_two.value = `${changeTimeZone(new Date(), 'America/Los_Angeles').toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false})}`;
@@ -43,6 +45,10 @@ time_two.value = `${changeTimeZone(new Date(), 'America/Los_Angeles').toLocaleTi
 //changed timezone
 timezone_two.placeholder = 'America/Los_Angeles';
 timezone_two.value = 'America/Los_Angeles';
+
+//changed date
+var new_date = `${changeTimeZone(new Date(), 'America/Los_Angeles')}`
+document.querySelector('.done .date').textContent = `${changeTimeZone(new Date(), 'America/Los_Angeles').toUTCString().slice(5, 16)}`
 
 
 
@@ -131,6 +137,20 @@ function update_options(value, setting){
 
     //format
     if(setting == 'format'){
+        const todo = document.querySelector('.todo .date');
+        const done = document.querySelector('.done .date');
+        if(value != 1){
+            todo.classList.remove('active');
+            done.classList.remove('active');
+        }else{
+            todo.classList.add('active');
+            done.classList.add('active');
+        }
 
+        if(value != 1){
+            option_format = 0;
+        }else{
+            option_format = 1;
+        }
     }
 }
