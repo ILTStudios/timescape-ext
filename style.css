@@ -48,7 +48,7 @@ body{
     font-family: 'Montserrat';
 }
 .todo .time >input{
-    width: 36px;
+    width: 56px;
 }
 .todo .timezone >input{
     width: 176px;
