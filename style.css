@@ -33,9 +33,25 @@ body{
     display: flex; align-items: center;
     margin: 21px 0 0 0;
 }
-.todo >div >p{
+.todo input{
     font-size: 14px;
     font-weight: 400;
+    outline: none;
+    border: none;
+    background: none;
+
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+.todo input::placeholder{
+    color: white;
+    font-family: 'Montserrat';
+}
+.todo .time >input{
+    width: 36px;
+}
+.todo .timezone >input{
+    width: 176px;
 }
 .todo .time{
     display: flex; align-items: center;
@@ -70,9 +86,25 @@ body{
     display: flex; align-items: center;
     margin: 21px 0 0 0;
 }
-.done >div >p{
+.done input{
     font-size: 14px;
     font-weight: 400;
+    outline: none;
+    border: none;
+    background: none;
+
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+.done input::placeholder{
+    color: white;
+    font-family: 'Montserrat';
+}
+.done .time >input{
+    width: 36px;
+}
+.done .timezone >input{
+    width: 176px;
 }
 .done .time{
     display: flex; align-items: center;
