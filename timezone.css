@@ -19,20 +19,28 @@
     background-color: white;
     display: none;
     position: absolute;
-    width: 100%;
+    width: inherit;
     top: 50px; left: 0;
+
+    padding: 12px; 
+    border-radius: 7px;
 }
 
 .content .search input{
     border: 1px solid #ccc;
-    padding: 12px;
+    padding: 10px;
     width: 90%;
 
-
+    font-size: 12px;
     color: black;
+
+    border-radius: 4px;
+
+    margin: 0 0 12px 0;
 }
 .content .search input::placeholder{
     color: black;
+    font-size: 12px;
 }
 
 
@@ -40,8 +48,8 @@
 
 
 /* options */
-.content .tz_options{
-    width: 97%;
+.content .tz_options_todo{
+    width: 100%;
     overflow-y: auto;
     overflow-x: hidden;
     height: 250px;
@@ -49,29 +57,70 @@
     margin: 0;
     padding: 0;
 }
-.tz_options::-webkit-scrollbar{
+.tz_options_todo::-webkit-scrollbar{
     width: 7px;
 }
-.tz_options::-webkit-scrollbar-track{
+.tz_options_todo::-webkit-scrollbar-track{
     border-radius: 21px;
     background-color: #f1f1f1;
 }
-.tz_options::-webkit-scrollbar-thumb{
+.tz_options_todo::-webkit-scrollbar-thumb{
     border-radius: 21px;
     background-color: #ccc;
 }
-.tz_options li{
+.tz_options_todo li{
     list-style-type: none;
     border-radius: 4px;
     
+    font-size: 12px;
     color: black;
 
     padding: 10px;
     margin: 10px 0 0 0;
+    width: 85%;
 
     transition: all .1s ease;
 }
-.tz_options li:hover{
+.tz_options_todo li:hover{
+    background-color: #f2f2f2;
+    cursor: pointer;
+}
+
+
+.content .tz_options_done{
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 250px;
+
+    margin: 0;
+    padding: 0;
+}
+.tz_options_done::-webkit-scrollbar{
+    width: 7px;
+}
+.tz_options_done::-webkit-scrollbar-track{
+    border-radius: 21px;
+    background-color: #f1f1f1;
+}
+.tz_options_done::-webkit-scrollbar-thumb{
+    border-radius: 21px;
+    background-color: #ccc;
+}
+.tz_options_done li{
+    list-style-type: none;
+    border-radius: 4px;
+    
+    font-size: 12px;
+    color: black;
+
+    padding: 10px;
+    margin: 10px 0 0 0;
+    width: 85%;
+
+    transition: all .1s ease;
+}
+.tz_options_done li:hover{
     background-color: #f2f2f2;
     cursor: pointer;
 }

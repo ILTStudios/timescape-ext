@@ -350,11 +350,15 @@ let timezone_arr = [
 ];
 
 for(elmn of timezone_arr){
-    var opt = document.createElement('li');
-    opt.value = elmn;
-    opt.innerHTML = elmn;
+    var opt_todo = document.createElement('li');
+    opt_todo.value = elmn;
+    opt_todo.innerHTML = elmn;
+    document.querySelector('.tz_options_todo').appendChild(opt_todo);
 
-    document.querySelector('.tz_options').appendChild(opt);
+    var opt_done = document.createElement('li');
+    opt_done.value = elmn;
+    opt_done.innerHTML = elmn;
+    document.querySelector('.tz_options_done').appendChild(opt_done);
 };
 
 
@@ -367,5 +371,16 @@ document.querySelector('.todo >div .timezone .select-btn').addEventListener('cli
     }else{
         document.querySelector('.todo >div .timezone .content').style.display = 'none';
         is_on = false;
+    }
+});
+
+var is_done_on = false;
+document.querySelector('.done >div .timezone .select-btn').addEventListener('click', () => {
+    if(is_done_on == false){
+        document.querySelector('.done >div .timezone .content').style.display = 'unset';
+        is_done_on = true;
+    }else{
+        document.querySelector('.done >div .timezone .content').style.display = 'none';
+        is_done_on = false;
     }
 });

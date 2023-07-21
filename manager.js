@@ -32,8 +32,8 @@ time_one.value = `${current_time}`;
 
 //current timezone
 const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-timezone_one.placeholder = `${timezone}`;
-timezone_one.value = `${timezone}`;
+// timezone_one.placeholder = `${timezone}`;
+// timezone_one.value = `${timezone}`;
 
 //current date
 document.querySelector('.todo .date').textContent = `${new Date().toUTCString().slice(5, 16)}`;
@@ -43,8 +43,8 @@ time_two.placeholder = `${changeTimeZone(new Date(), 'America/Los_Angeles')}`
 time_two.value = `${changeTimeZone(new Date(), 'America/Los_Angeles').toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false})}`;
 
 //changed timezone
-timezone_two.placeholder = 'America/Los_Angeles';
-timezone_two.value = 'America/Los_Angeles';
+// timezone_two.placeholder = 'America/Los_Angeles';
+// timezone_two.value = 'America/Los_Angeles';
 
 //changed date
 var new_date = `${changeTimeZone(new Date(), 'America/Los_Angeles')}`
