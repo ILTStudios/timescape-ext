@@ -5,14 +5,14 @@ html{
 
 body{
     min-width: 400px;
-    min-height: 500px;
+    min-height: 550px;
 
     margin: 0; padding: 0;
 }
 
 .extension-div{
     width: 400px;
-    height: 500px;
+    height: 550px;
     background-color: #181818;
     margin: 0; padding: 1rem;
 
@@ -26,7 +26,7 @@ body{
 .extension-div .header{
     font-weight: 500;
     font-size: 32px;
-    margin: 52px 0 0 0;
+    margin: 12px 0 0 0;
 }
 
 .date{
