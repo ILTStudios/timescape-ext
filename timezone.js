@@ -417,7 +417,7 @@ search_inp_todo.addEventListener('keyup', () => {
 
     arr = timezone_arr.filter(data => {
         return data.toLowerCase().includes(search_value);
-    }).map(data => `<li>${data}</li>`).join("")
+    }).map(data => `<li onclick="update_name(this)">${data}</li>`).join("")
     search_inp_todo.parentElement.parentElement.children[1].innerHTML = arr ? arr : `<li>Oops! Country not found</li>`;
 });
 const search_inp_done = document.querySelector('.done >div .timezone .content .search > input');
@@ -427,7 +427,7 @@ search_inp_done.addEventListener('keyup', () => {
 
     arr = timezone_arr.filter(data => {
         return data.toLowerCase().includes(search_value);
-    }).map(data => `<li>${data}</li>`).join("")
+    }).map(data => `<li onclick="update_name(this)">${data}</li>`).join("")
     search_inp_done.parentElement.parentElement.children[1].innerHTML = arr ? arr : `<li>Oops! Country not found</li>`;
 });
 
@@ -445,6 +445,7 @@ document.querySelector('.todo >div .timezone .select-btn').addEventListener('cli
 
         todo_content.style.display = 'unset';
         is_on = true;
+        search_inp_todo.focus();
     }else{
         todo_content.style.display = 'none';
         is_on = false;
@@ -457,6 +458,7 @@ document.querySelector('.done >div .timezone .select-btn').addEventListener('cli
 
         done_content.style.display = 'unset';
         is_done_on = true;
+        search_inp_done.focus();
     }else{
         done_content.style.display = 'none';
         is_done_on = false;
