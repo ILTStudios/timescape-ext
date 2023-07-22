@@ -64,7 +64,7 @@ body{
     font-family: 'Montserrat';
 }
 .todo .time >input{
-    width: 56px;
+    width: inherit;
 }
 .todo .timezone >input{
     width: 176px;
@@ -122,7 +122,7 @@ body{
     font-family: 'Montserrat';
 }
 .done .time >input{
-    width: 56px;
+    width: inherit;
 }
 .done .timezone >input{
     width: 176px;
