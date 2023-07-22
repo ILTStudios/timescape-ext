@@ -24,6 +24,8 @@
 
     padding: 12px; 
     border-radius: 7px;
+
+    z-index: 100;
 }
 
 .content .search input{

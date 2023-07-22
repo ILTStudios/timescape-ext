@@ -364,10 +364,14 @@ for(elmn of timezone_arr){
 
 //display
 var is_on = false;
+var is_done_on = false;
 const todo_content = document.querySelector('.todo >div .timezone .content');
 const done_content = document.querySelector('.done >div .timezone .content');
 document.querySelector('.todo >div .timezone .select-btn').addEventListener('click', () => {
     if(is_on == false){
+        done_content.style.display = 'none';
+        is_done_on = false;
+
         todo_content.style.display = 'unset';
         is_on = true;
     }else{
@@ -375,13 +379,23 @@ document.querySelector('.todo >div .timezone .select-btn').addEventListener('cli
         is_on = false;
     }
 });
-
-var is_done_on = false;
 document.querySelector('.done >div .timezone .select-btn').addEventListener('click', () => {
     if(is_done_on == false){
+        todo_content.style.display = 'none';
+        is_on = false;
+
         done_content.style.display = 'unset';
         is_done_on = true;
     }else{
+        done_content.style.display = 'none';
+        is_done_on = false;
+    }
+});
+
+window.addEventListener('click', (elmn) => {
+    if(elmn.target.classList.value == 'extension-div'){
+        todo_content.style.display = 'none';
+        is_on = false;
         done_content.style.display = 'none';
         is_done_on = false;
     }
