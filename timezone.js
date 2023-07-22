@@ -377,7 +377,7 @@ search_inp_todo.addEventListener('keyup', () => {
     arr = timezone_arr.filter(data => {
         return data.toLowerCase().startsWith(search_value);
     }).map(data => `<li>${data}</li>`).join("")
-    search_inp_todo.parentElement.parentElement.children[1].innerHTML = arr;
+    search_inp_todo.parentElement.parentElement.children[1].innerHTML = arr ? arr : `<li>Oops! Country not found</li>`;
 });
 const search_inp_done = document.querySelector('.done >div .timezone .content .search > input');
 search_inp_done.addEventListener('keyup', () => {
@@ -387,7 +387,7 @@ search_inp_done.addEventListener('keyup', () => {
     arr = timezone_arr.filter(data => {
         return data.toLowerCase().startsWith(search_value);
     }).map(data => `<li>${data}</li>`).join("")
-    search_inp_done.parentElement.parentElement.children[1].innerHTML = arr;
+    search_inp_done.parentElement.parentElement.children[1].innerHTML = arr ? arr : `<li>Oops! Country not found</li>`;
 });
 
 
