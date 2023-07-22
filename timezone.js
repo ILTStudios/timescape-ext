@@ -350,16 +350,46 @@ let timezone_arr = [
 ];
 
 for(elmn of timezone_arr){
-    var opt_todo = document.createElement('li');
-    opt_todo.value = elmn;
-    opt_todo.innerHTML = elmn;
-    document.querySelector('.tz_options_todo').appendChild(opt_todo);
+    let li_todo = `<li onclick="update_name(this)" value="${elmn}"> ${elmn} </li>`;
+    document.querySelector('.tz_options_todo').insertAdjacentHTML('beforeend', li_todo);
 
-    var opt_done = document.createElement('li');
-    opt_done.value = elmn;
-    opt_done.innerHTML = elmn;
-    document.querySelector('.tz_options_done').appendChild(opt_done);
+    let li_done = `<li onclick="update_name(this)" value="${elmn}"> ${elmn} </li>`;
+    document.querySelector('.tz_options_done').insertAdjacentHTML('beforeend', li_done);
 };
+
+//updates select-btn
+function update_name(name){
+    name.parentElement.parentElement.parentElement.children[0].innerText = name.innerText;
+
+    //disable all popups
+    done_content.style.display = 'none';
+    is_done_on = false;
+    todo_content.style.display = 'none';
+    is_on = false;
+}
+
+//search method
+const search_inp_todo = document.querySelector('.todo >div .timezone .content .search > input');
+search_inp_todo.addEventListener('keyup', () => {
+    let arr = [];
+    var search_value = search_inp_todo.value.toLowerCase();
+
+    arr = timezone_arr.filter(data => {
+        return data.toLowerCase().startsWith(search_value);
+    }).map(data => `<li>${data}</li>`).join("")
+    search_inp_todo.parentElement.parentElement.children[1].innerHTML = arr;
+});
+const search_inp_done = document.querySelector('.done >div .timezone .content .search > input');
+search_inp_done.addEventListener('keyup', () => {
+    let arr = [];
+    var search_value = search_inp_done.value.toLowerCase();
+
+    arr = timezone_arr.filter(data => {
+        return data.toLowerCase().startsWith(search_value);
+    }).map(data => `<li>${data}</li>`).join("")
+    search_inp_done.parentElement.parentElement.children[1].innerHTML = arr;
+});
+
 
 
 //display
@@ -400,3 +430,6 @@ window.addEventListener('click', (elmn) => {
         is_done_on = false;
     }
 });
+
+
+//formatting any input into date
