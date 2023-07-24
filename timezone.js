@@ -28,6 +28,7 @@ let timezone_arr = {
     "Hawaii Standard Time (HST)":"America/Adak",
     "Niue Time (NUT)":"Pacific/Niue",
     "Anywhere on Earth (AoE)":"Africa/Abidjan",
+    "Current Timezone":'current',
 };
 
 //variables
@@ -63,7 +64,7 @@ for(const [key, value] of Object.entries(timezone_arr)){
 //updates select-btn
 function update_name(name, identifier){
     name.parentElement.parentElement.parentElement.children[0].innerText = name.innerText;
-    
+
     //disable all popups
     done_content.style.display = 'none';
     is_done_on = false;
@@ -71,13 +72,18 @@ function update_name(name, identifier){
     is_on = false;
 
     if(identifier == 0){
-        var zone_value = timezone_one.innerHTML;
-        var time_value = time_one.value;
+        //get date
+        if(timezone_one.innerHTML == 'Current Timezone'){
+            var timezone_curr = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            var new_time = changeTimeZone(new Date(), timezone_curr);
 
-        var zone = timezone_arr[zone_value];
-        console.log(zone, zone_value, time_value);
+            document.querySelector('.todo .time > input').value = new_time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false});
+        }else{
+            var full_date = new Date(`${document.querySelector('.todo .date').innerHTML} ${time_one.value}`);
+            var new_time = changeTimeZone(full_date, timezone_arr[timezone_one.innerHTML]);
 
-        console.log(new Date(time_value));
+            document.querySelector('.todo .time > input').value = new_time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false});
+        }
     }
 
     update_timezone();
@@ -159,6 +165,7 @@ time_one.value = `${current_time}`;
 
 //current timezone
 const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+timezone_one.innerHTML = 'Current Timezone';
 
 //current date
 document.querySelector('.todo .date').textContent = `${new Date().toUTCString().slice(5, 16)}`;
@@ -175,7 +182,6 @@ function update_timezone(){
         return
     }else{
         
-
     }
 }
 
@@ -187,5 +193,4 @@ function update_timezone(){
 //changed date
 var new_date = `${changeTimeZone(new Date(), 'America/Los_Angeles')}`
 document.querySelector('.done .date').textContent = `${changeTimeZone(new Date(), 'America/Los_Angeles').toUTCString().slice(5, 16)}`
-
 
