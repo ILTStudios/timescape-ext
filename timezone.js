@@ -1,413 +1,88 @@
-// let timezone_arr = [
-//     'Europe/Andorra',
-//     'Asia/Dubai',
-//     'Asia/Kabul',
-//     'Europe/Tirane',
-//     'Asia/Yerevan',
-//     'Antarctica/Casey',
-//     'Antarctica/Davis',
-//     'Antarctica/DumontDUrville',
-//     'Antarctica/Mawson',
-//     'Antarctica/Palmer',
-//     'Antarctica/Rothera',
-//     'Antarctica/Syowa',
-//     'Antarctica/Troll',
-//     'Antarctica/Vostok',
-//     'America/Argentina/Buenos_Aires',
-//     'America/Argentina/Cordoba',
-//     'America/Argentina/Salta',
-//     'America/Argentina/Jujuy',
-//     'America/Argentina/Tucuman',
-//     'America/Argentina/Catamarca',
-//     'America/Argentina/La_Rioja',
-//     'America/Argentina/San_Juan',
-//     'America/Argentina/Mendoza',
-//     'America/Argentina/San_Luis',
-//     'America/Argentina/Rio_Gallegos',
-//     'America/Argentina/Ushuaia',
-//     'Pacific/Pago_Pago',
-//     'Europe/Vienna',
-//     'Australia/Lord_Howe',
-//     'Antarctica/Macquarie',
-//     'Australia/Hobart',
-//     'Australia/Currie',
-//     'Australia/Melbourne',
-//     'Australia/Sydney',
-//     'Australia/Broken_Hill',
-//     'Australia/Brisbane',
-//     'Australia/Lindeman',
-//     'Australia/Adelaide',
-//     'Australia/Darwin',
-//     'Australia/Perth',
-//     'Australia/Eucla',
-//     'Asia/Baku',
-//     'America/Barbados',
-//     'Asia/Dhaka',
-//     'Europe/Brussels',
-//     'Europe/Sofia',
-//     'Atlantic/Bermuda',
-//     'Asia/Brunei',
-//     'America/La_Paz',
-//     'America/Noronha',
-//     'America/Belem',
-//     'America/Fortaleza',
-//     'America/Recife',
-//     'America/Araguaina',
-//     'America/Maceio',
-//     'America/Bahia',
-//     'America/Sao_Paulo',
-//     'America/Campo_Grande',
-//     'America/Cuiaba',
-//     'America/Santarem',
-//     'America/Porto_Velho',
-//     'America/Boa_Vista',
-//     'America/Manaus',
-//     'America/Eirunepe',
-//     'America/Rio_Branco',
-//     'America/Nassau',
-//     'Asia/Thimphu',
-//     'Europe/Minsk',
-//     'America/Belize',
-//     'America/St_Johns',
-//     'America/Halifax',
-//     'America/Glace_Bay',
-//     'America/Moncton',
-//     'America/Goose_Bay',
-//     'America/Blanc-Sablon',
-//     'America/Toronto',
-//     'America/Nipigon',
-//     'America/Thunder_Bay',
-//     'America/Iqaluit',
-//     'America/Pangnirtung',
-//     'America/Atikokan',
-//     'America/Winnipeg',
-//     'America/Rainy_River',
-//     'America/Resolute',
-//     'America/Rankin_Inlet',
-//     'America/Regina',
-//     'America/Swift_Current',
-//     'America/Edmonton',
-//     'America/Cambridge_Bay',
-//     'America/Yellowknife',
-//     'America/Inuvik',
-//     'America/Creston',
-//     'America/Dawson_Creek',
-//     'America/Fort_Nelson',
-//     'America/Vancouver',
-//     'America/Whitehorse',
-//     'America/Dawson',
-//     'Indian/Cocos',
-//     'Europe/Zurich',
-//     'Africa/Abidjan',
-//     'Pacific/Rarotonga',
-//     'America/Santiago',
-//     'America/Punta_Arenas',
-//     'Pacific/Easter',
-//     'Asia/Shanghai',
-//     'Asia/Urumqi',
-//     'America/Bogota',
-//     'America/Costa_Rica',
-//     'America/Havana',
-//     'Atlantic/Cape_Verde',
-//     'America/Curacao',
-//     'Indian/Christmas',
-//     'Asia/Nicosia',
-//     'Asia/Famagusta',
-//     'Europe/Prague',
-//     'Europe/Berlin',
-//     'Europe/Copenhagen',
-//     'America/Santo_Domingo',
-//     'Africa/Algiers',
-//     'America/Guayaquil',
-//     'Pacific/Galapagos',
-//     'Europe/Tallinn',
-//     'Africa/Cairo',
-//     'Africa/El_Aaiun',
-//     'Europe/Madrid',
-//     'Africa/Ceuta',
-//     'Atlantic/Canary',
-//     'Europe/Helsinki',
-//     'Pacific/Fiji',
-//     'Atlantic/Stanley',
-//     'Pacific/Chuuk',
-//     'Pacific/Pohnpei',
-//     'Pacific/Kosrae',
-//     'Atlantic/Faroe',
-//     'Europe/Paris',
-//     'Europe/London',
-//     'Asia/Tbilisi',
-//     'America/Cayenne',
-//     'Africa/Accra',
-//     'Europe/Gibraltar',
-//     'America/Godthab',
-//     'America/Danmarkshavn',
-//     'America/Scoresbysund',
-//     'America/Thule',
-//     'Europe/Athens',
-//     'Atlantic/South_Georgia',
-//     'America/Guatemala',
-//     'Pacific/Guam',
-//     'Africa/Bissau',
-//     'America/Guyana',
-//     'Asia/Hong_Kong',
-//     'America/Tegucigalpa',
-//     'America/Port-au-Prince',
-//     'Europe/Budapest',
-//     'Asia/Jakarta',
-//     'Asia/Pontianak',
-//     'Asia/Makassar',
-//     'Asia/Jayapura',
-//     'Europe/Dublin',
-//     'Asia/Jerusalem',
-//     'Asia/Kolkata',
-//     'Indian/Chagos',
-//     'Asia/Baghdad',
-//     'Asia/Tehran',
-//     'Atlantic/Reykjavik',
-//     'Europe/Rome',
-//     'America/Jamaica',
-//     'Asia/Amman',
-//     'Asia/Tokyo',
-//     'Africa/Nairobi',
-//     'Asia/Bishkek',
-//     'Pacific/Tarawa',
-//     'Pacific/Enderbury',
-//     'Pacific/Kiritimati',
-//     'Asia/Pyongyang',
-//     'Asia/Seoul',
-//     'Asia/Almaty',
-//     'Asia/Qyzylorda',
-//     'Asia/Qostanay',
-//     'Asia/Aqtobe',
-//     'Asia/Aqtau',
-//     'Asia/Atyrau',
-//     'Asia/Oral',
-//     'Asia/Beirut',
-//     'Asia/Colombo',
-//     'Africa/Monrovia',
-//     'Europe/Vilnius',
-//     'Europe/Luxembourg',
-//     'Europe/Riga',
-//     'Africa/Tripoli',
-//     'Africa/Casablanca',
-//     'Europe/Monaco',
-//     'Europe/Chisinau',
-//     'Pacific/Majuro',
-//     'Pacific/Kwajalein',
-//     'Asia/Yangon',
-//     'Asia/Ulaanbaatar',
-//     'Asia/Hovd',
-//     'Asia/Choibalsan',
-//     'Asia/Macau',
-//     'America/Martinique',
-//     'Europe/Malta',
-//     'Indian/Mauritius',
-//     'Indian/Maldives',
-//     'America/Mexico_City',
-//     'America/Cancun',
-//     'America/Merida',
-//     'America/Monterrey',
-//     'America/Matamoros',
-//     'America/Mazatlan',
-//     'America/Chihuahua',
-//     'America/Ojinaga',
-//     'America/Hermosillo',
-//     'America/Tijuana',
-//     'America/Bahia_Banderas',
-//     'Asia/Kuala_Lumpur',
-//     'Asia/Kuching',
-//     'Africa/Maputo',
-//     'Africa/Windhoek',
-//     'Pacific/Noumea',
-//     'Pacific/Norfolk',
-//     'Africa/Lagos',
-//     'America/Managua',
-//     'Europe/Amsterdam',
-//     'Europe/Oslo',
-//     'Asia/Kathmandu',
-//     'Pacific/Nauru',
-//     'Pacific/Niue',
-//     'Pacific/Auckland',
-//     'Pacific/Chatham',
-//     'America/Panama',
-//     'America/Lima',
-//     'Pacific/Tahiti',
-//     'Pacific/Marquesas',
-//     'Pacific/Gambier',
-//     'Pacific/Port_Moresby',
-//     'Pacific/Bougainville',
-//     'Asia/Manila',
-//     'Asia/Karachi',
-//     'Europe/Warsaw',
-//     'America/Miquelon',
-//     'Pacific/Pitcairn',
-//     'America/Puerto_Rico',
-//     'Asia/Gaza',
-//     'Asia/Hebron',
-//     'Europe/Lisbon',
-//     'Atlantic/Madeira',
-//     'Atlantic/Azores',
-//     'Pacific/Palau',
-//     'America/Asuncion',
-//     'Asia/Qatar',
-//     'Indian/Reunion',
-//     'Europe/Bucharest',
-//     'Europe/Belgrade',
-//     'Europe/Kaliningrad',
-//     'Europe/Moscow',
-//     'Europe/Simferopol',
-//     'Europe/Kirov',
-//     'Europe/Astrakhan',
-//     'Europe/Volgograd',
-//     'Europe/Saratov',
-//     'Europe/Ulyanovsk',
-//     'Europe/Samara',
-//     'Asia/Yekaterinburg',
-//     'Asia/Omsk',
-//     'Asia/Novosibirsk',
-//     'Asia/Barnaul',
-//     'Asia/Tomsk',
-//     'Asia/Novokuznetsk',
-//     'Asia/Krasnoyarsk',
-//     'Asia/Irkutsk',
-//     'Asia/Chita',
-//     'Asia/Yakutsk',
-//     'Asia/Khandyga',
-//     'Asia/Vladivostok',
-//     'Asia/Ust-Nera',
-//     'Asia/Magadan',
-//     'Asia/Sakhalin',
-//     'Asia/Srednekolymsk',
-//     'Asia/Kamchatka',
-//     'Asia/Anadyr',
-//     'Asia/Riyadh',
-//     'Pacific/Guadalcanal',
-//     'Indian/Mahe',
-//     'Africa/Khartoum',
-//     'Europe/Stockholm',
-//     'Asia/Singapore',
-//     'America/Paramaribo',
-//     'Africa/Juba',
-//     'Africa/Sao_Tome',
-//     'America/El_Salvador',
-//     'Asia/Damascus',
-//     'America/Grand_Turk',
-//     'Africa/Ndjamena',
-//     'Indian/Kerguelen',
-//     'Asia/Bangkok',
-//     'Asia/Dushanbe',
-//     'Pacific/Fakaofo',
-//     'Asia/Dili',
-//     'Asia/Ashgabat',
-//     'Africa/Tunis',
-//     'Pacific/Tongatapu',
-//     'Europe/Istanbul',
-//     'America/Port_of_Spain',
-//     'Pacific/Funafuti',
-//     'Asia/Taipei',
-//     'Europe/Kiev',
-//     'Europe/Uzhgorod',
-//     'Europe/Zaporozhye',
-//     'Pacific/Wake',
-//     'America/New_York',
-//     'America/Detroit',
-//     'America/Kentucky/Louisville',
-//     'America/Kentucky/Monticello',
-//     'America/Indiana/Indianapolis',
-//     'America/Indiana/Vincennes',
-//     'America/Indiana/Winamac',
-//     'America/Indiana/Marengo',
-//     'America/Indiana/Petersburg',
-//     'America/Indiana/Vevay',
-//     'America/Chicago',
-//     'America/Indiana/Tell_City',
-//     'America/Indiana/Knox',
-//     'America/Menominee',
-//     'America/North_Dakota/Center',
-//     'America/North_Dakota/New_Salem',
-//     'America/North_Dakota/Beulah',
-//     'America/Denver',
-//     'America/Boise',
-//     'America/Phoenix',
-//     'America/Los_Angeles',
-//     'America/Anchorage',
-//     'America/Juneau',
-//     'America/Sitka',
-//     'America/Metlakatla',
-//     'America/Yakutat',
-//     'America/Nome',
-//     'America/Adak',
-//     'Pacific/Honolulu',
-//     'America/Montevideo',
-//     'Asia/Samarkand',
-//     'Asia/Tashkent',
-//     'America/Caracas',
-//     'Asia/Ho_Chi_Minh',
-//     'Pacific/Efate',
-//     'Pacific/Wallis',
-//     'Pacific/Apia',
-//     'Africa/Johannesburg',
-// ];
-
-let timezone_arr =[
-    "Line Islands Time (LINT)",
-    "Tonga Time (TOT)",
-    "Chatham Island Standard Time (CHAST)",
-    "Anadyr Time (ANAT)",
-    "Solomon Islands Time (SBT)",
-    "Lord Howe Standard Time (LHST)",
-    "Australian Eastern Time (AET)",
-    "Australian Central Standard Time (ACT)",
-    "Japan Standard Time (JST)",
-    "Australian Central Western Standard Time (ACWST)",
-    "China Standard Time (CST)",
-    "Western Indonesian Time (WIB)",
-    "Myanmar Time (MMT)",
-    "Bangladesh Standard Time (BST)",
-    "Nepal Time (NPT)",
-    "India Standard Time (IST)",
-    "Uzbekistan Time (UZT)",
-    "Afghanistan Time (AFT)",
-    "Gulf Standard Time (GST)",
-    "Iran Standard Time (IRST)",
-    "Eastern European Summer Time (EEST)",
-    "Central European Summer Time (CEST)",
-    "British Summer Time (BST)",
-    "Greenwich Mean Time (GMT)",
-    "Cape Verde Time (CVT)",
-    "Western Greenland Summer Time (WGST)",
-    "Newfoundland Daylight Time (NDT)",
-    "Argentina Time (ART)",
-    "Eastern Daylight Time (EDT)",
-    "Central Daylight Time (CDT)",
-    "Central Standard Time (CST)",
-    "Pacific Daylight Time (PDT)",
-    "Alaska Daylight Time (AKDT)",
-    "Hawaii-Aleutian Daylight Time (HDT)",
-    "Marquesas Time (MART)",
-    "Hawaii Standard Time (HST)",
-    "Niue Time (NUT)",
-    "Anywhere on Earth (AoE)",
-];
-
-for(elmn of timezone_arr){
-    let li_todo = `<li onclick="update_name(this)" value="${elmn}"> ${elmn} </li>`;
-    document.querySelector('.tz_options_todo').insertAdjacentHTML('beforeend', li_todo);
-
-    let li_done = `<li onclick="update_name(this)" value="${elmn}"> ${elmn} </li>`;
-    document.querySelector('.tz_options_done').insertAdjacentHTML('beforeend', li_done);
+let timezone_arr = {
+    "Lord Howe Standard Time (LHST)":"Australia/Lord_Howe",
+    "Australian Eastern Time (AET)":"Australia/Sydney",
+    "Australian Central Standard Time (ACT)":"Australia/Sydney",
+    "Japan Standard Time (JST)":"Asia/Tokyo",
+    "Australian Central Western Standard Time (ACWST)":"Australia/Darwin",
+    "China Standard Time (CST)":"Asia/Shanghai",
+    "Western Indonesian Time (WIB)":"Asia/Jakarta",
+    "India Standard Time (IST)":"Asia/Kolkata",
+    "Uzbekistan Time (UZT)":"Asia/Samarkand",
+    "Gulf Standard Time (GST)":"Atlantic/South_Georgia",
+    "Iran Standard Time (IRST)":"Iran",
+    "Eastern European Summer Time (EEST)":"Asia/Beirut",
+    "Central European Summer Time (CEST)":"Africa/Ceuta",
+    "British Summer Time (BST)":"Europe/Belfast",
+    "Greenwich Mean Time (GMT)":"Africa/Abidjan",
+    "Cape Verde Time (CVT)":"Atlantic/Cape_Verde",
+    "Western Greenland Summer Time (WGST)":"America/Nuuk",
+    "Newfoundland Daylight Time (NDT)":"Canada/Newfoundland",
+    "Argentina Time (ART)":"America/Argentina/ComodRivadavia",
+    "Eastern Daylight Time (EDT)":"US/Eastern",
+    "Central Daylight Time (CDT)":"US/Central",
+    "Central Standard Time (CST)":"America/Chicago",
+    "Pacific Daylight Time (PDT)":"Canada/Pacific",
+    "Alaska Daylight Time (AKDT)":"America/Anchorage",
+    "Hawaii-Aleutian Daylight Time (HDT)":"US/Aleutian",
+    "Marquesas Time (MART)":"Pacific/Marquesas",
+    "Hawaii Standard Time (HST)":"America/Adak",
+    "Niue Time (NUT)":"Pacific/Niue",
+    "Anywhere on Earth (AoE)":"Africa/Abidjan",
 };
 
-//updates select-btn
-function update_name(name){
-    name.parentElement.parentElement.parentElement.children[0].innerText = name.innerText;
+//variables
+const timezone_one = document.querySelector('.todo .timezone .select-btn');
+const time_one = document.querySelector('.todo .time input');
+const timezone_two = document.querySelector('.done .timezone .select-btn');
+const time_two = document.querySelector('.done .time input');
 
+function changeTimeZone(date, timeZone) {
+    if (typeof date === 'string') {
+      return new Date(
+        new Date(date).toLocaleString('en-US', {
+          timeZone,
+        }),
+      );
+    }
+    return new Date(
+      date.toLocaleString('en-US', {
+        timeZone,
+      }),
+    );
+}
+
+
+for(const [key, value] of Object.entries(timezone_arr)){
+    let li_todo = `<li onclick="update_name(this, 0)" value="${key}"> ${key} </li>`;
+    document.querySelector('.tz_options_todo').insertAdjacentHTML('beforeend', li_todo);
+
+    let li_done = `<li onclick="update_name(this, 1)" value="${key}"> ${key} </li>`;
+    document.querySelector('.tz_options_done').insertAdjacentHTML('beforeend', li_done);
+}
+
+//updates select-btn
+function update_name(name, identifier){
+    name.parentElement.parentElement.parentElement.children[0].innerText = name.innerText;
+    
     //disable all popups
     done_content.style.display = 'none';
     is_done_on = false;
     todo_content.style.display = 'none';
     is_on = false;
+
+    if(identifier == 0){
+        var zone_value = timezone_one.innerHTML;
+        var time_value = time_one.value;
+
+        var zone = timezone_arr[zone_value];
+        console.log(zone, zone_value, time_value);
+
+        console.log(new Date(time_value));
+    }
+
+    update_timezone();
 }
+
 
 //search method
 const search_inp_todo = document.querySelector('.todo >div .timezone .content .search > input');
@@ -415,17 +90,18 @@ search_inp_todo.addEventListener('keyup', () => {
     let arr = [];
     var search_value = search_inp_todo.value.toLowerCase();
 
-    arr = timezone_arr.filter(data => {
+    arr = Object.keys(timezone_arr).filter(data => {
         return data.toLowerCase().includes(search_value);
     }).map(data => `<li onclick="update_name(this)">${data}</li>`).join("")
     search_inp_todo.parentElement.parentElement.children[1].innerHTML = arr ? arr : `<li>Oops! Country not found</li>`;
 });
+
 const search_inp_done = document.querySelector('.done >div .timezone .content .search > input');
 search_inp_done.addEventListener('keyup', () => {
     let arr = [];
     var search_value = search_inp_done.value.toLowerCase();
 
-    arr = timezone_arr.filter(data => {
+    arr = Object.keys(timezone_arr).filter(data => {
         return data.toLowerCase().includes(search_value);
     }).map(data => `<li onclick="update_name(this)">${data}</li>`).join("")
     search_inp_done.parentElement.parentElement.children[1].innerHTML = arr ? arr : `<li>Oops! Country not found</li>`;
@@ -475,4 +151,41 @@ window.addEventListener('click', (elmn) => {
 });
 
 
-//formatting any input into date
+//actual converting
+//current time
+const current_time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false});
+time_one.placeholder = `${current_time}`;
+time_one.value = `${current_time}`;
+
+//current timezone
+const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+//current date
+document.querySelector('.todo .date').textContent = `${new Date().toUTCString().slice(5, 16)}`;
+
+
+//when both inputs are prepared
+function update_timezone(){
+    let timezone_todo = document.querySelector('.todo .timezone .select-btn').innerHTML;
+    let timezone_done = document.querySelector('.done .timezone .select-btn').innerHTML;
+    let time_todo = document.querySelector('.todo .time > input').value;
+    let time_done = document.querySelector('.done .time > input').value;
+
+    if(timezone_todo.includes('<span>') || timezone_done.includes('<span>')){
+        return
+    }else{
+        
+
+    }
+}
+
+
+//changed time
+// time_two.placeholder = `${changeTimeZone(new Date(), 'America/Los_Angeles')}`
+// time_two.value = `${changeTimeZone(new Date(), 'America/Los_Angeles').toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false})}`;
+
+//changed date
+var new_date = `${changeTimeZone(new Date(), 'America/Los_Angeles')}`
+document.querySelector('.done .date').textContent = `${changeTimeZone(new Date(), 'America/Los_Angeles').toUTCString().slice(5, 16)}`
+
+
