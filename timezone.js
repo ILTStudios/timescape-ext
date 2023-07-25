@@ -180,12 +180,19 @@ function update_timezone(){
 
     if(timezone_todo.includes('<span>') || timezone_done.includes('<span>')){
         return
-    }else{
-        
+    }
+    if(!timezone_todo.includes('<span>') && !timezone_done.includes('<span>')){
+        if(timezone_arr[timezone_todo] == 'current'){
+            var timezone_curr = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            var timezone_new = timezone_arr[timezone_done]
+            var full_date = new Date(`${document.querySelector('.todo .date').innerHTML} ${time_one.value}`);
+            console.log(changeTimeZone(full_date, timezone_new));
+
+            document.querySelector('.done .date').textContent = `${changeTimeZone(full_date, timezone_new).toUTCString().slice(5,16)}`
+            document.querySelector('.done .time > input').value = `${changeTimeZone(full_date, timezone_new).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12:false})}`;
+        }
     }
 }
-
-
 //changed time
 // time_two.placeholder = `${changeTimeZone(new Date(), 'America/Los_Angeles')}`
 // time_two.value = `${changeTimeZone(new Date(), 'America/Los_Angeles').toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false})}`;
@@ -193,4 +200,3 @@ function update_timezone(){
 //changed date
 var new_date = `${changeTimeZone(new Date(), 'America/Los_Angeles')}`
 document.querySelector('.done .date').textContent = `${changeTimeZone(new Date(), 'America/Los_Angeles').toUTCString().slice(5, 16)}`
-
