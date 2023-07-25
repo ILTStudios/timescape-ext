@@ -54,16 +54,38 @@ function changeTimeZone(date, timeZone) {
 
 
 for(const [key, value] of Object.entries(timezone_arr)){
-    let li_todo = `<li onclick="update_name(this, 0)" value="${key}"> ${key} </li>`;
+    let li_todo = `<li value="${key}"> ${key} </li>`;
     document.querySelector('.tz_options_todo').insertAdjacentHTML('beforeend', li_todo);
 
-    let li_done = `<li onclick="update_name(this, 1)" value="${key}"> ${key} </li>`;
+    let li_done = `<li value="${key}"> ${key} </li>`;
     document.querySelector('.tz_options_done').insertAdjacentHTML('beforeend', li_done);
 }
 
+//unsafe hash problem
+for(var i = 0; i < document.querySelector('.tz_options_done').children.length; i++){
+    document.querySelector('.tz_options_done').children[i].addEventListener('click', (elmn) => {
+        update_name(elmn, 1)
+    });
+    document.querySelector('.tz_options_todo').children[i].addEventListener('click', (elmn) => {
+        update_name(elmn, 0)
+    });
+}
+// document.querySelector('.tz_options_done').children.forEach(element => {
+//     element.addEventListener('click', () => {
+//         update_name(this, 0)
+//     });
+// });
+
+// document.querySelector('.tz_options_todo').children.forEach(element => {
+//     element.addEventListener('click', () => {
+//         update_name(this, 1)
+//     });
+// });
+
 //updates select-btn
 function update_name(name, identifier){
-    name.parentElement.parentElement.parentElement.children[0].innerText = name.innerText;
+    console.log(name.target.parentElement.parentElement.parentElement.children[0])
+    name.target.parentElement.parentElement.parentElement.children[0].innerText = name.target.innerText;
 
     //disable all popups
     done_content.style.display = 'none';
