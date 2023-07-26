@@ -70,17 +70,6 @@ for(var i = 0; i < document.querySelector('.tz_options_done').children.length; i
         update_name(elmn, 0)
     });
 }
-// document.querySelector('.tz_options_done').children.forEach(element => {
-//     element.addEventListener('click', () => {
-//         update_name(this, 0)
-//     });
-// });
-
-// document.querySelector('.tz_options_todo').children.forEach(element => {
-//     element.addEventListener('click', () => {
-//         update_name(this, 1)
-//     });
-// });
 
 //updates select-btn
 function update_name(name, identifier){
@@ -213,10 +202,6 @@ function update_timezone(){
         }
     }
 }
-//changed time
-// time_two.placeholder = `${changeTimeZone(new Date(), 'America/Los_Angeles')}`
-// time_two.value = `${changeTimeZone(new Date(), 'America/Los_Angeles').toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false})}`;
-
 //changed date
 var new_date = `${changeTimeZone(new Date(), 'America/Los_Angeles')}`
 document.querySelector('.done .date').textContent = `${changeTimeZone(new Date(), 'America/Los_Angeles').toUTCString().slice(5, 16)}`

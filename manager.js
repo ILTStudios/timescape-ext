@@ -1,31 +1,3 @@
-//change timezones
-//________________
-// function changeTimeZone(date, timeZone) {
-//     if (typeof date === 'string') {
-//       return new Date(
-//         new Date(date).toLocaleString('en-US', {
-//           timeZone,
-//         }),
-//       );
-//     }
-//     return new Date(
-//       date.toLocaleString('en-US', {
-//         timeZone,
-//       }),
-//     );
-//   }
-
-//gets all the inputs and outputs
-//_______________________________
-// const timezone_one = document.querySelector('.todo .timezone input');
-// const time_one = document.querySelector('.todo .time input');
-// const timezone_two = document.querySelector('.done .timezone input');
-// const time_two = document.querySelector('.done .time input');
-
-//set default settings
-//____________________
-
-
 //change options
 //______________
 const time_settings = document.querySelector('.time-setting');
