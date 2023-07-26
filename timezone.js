@@ -84,7 +84,6 @@ for(var i = 0; i < document.querySelector('.tz_options_done').children.length; i
 
 //updates select-btn
 function update_name(name, identifier){
-    console.log(name.target.parentElement.parentElement.parentElement.children[0])
     name.target.parentElement.parentElement.parentElement.children[0].innerText = name.target.innerText;
 
     //disable all popups
@@ -208,7 +207,6 @@ function update_timezone(){
             var timezone_curr = Intl.DateTimeFormat().resolvedOptions().timeZone;
             var timezone_new = timezone_arr[timezone_done]
             var full_date = new Date(`${document.querySelector('.todo .date').innerHTML} ${time_one.value}`);
-            console.log(changeTimeZone(full_date, timezone_new));
 
             document.querySelector('.done .date').textContent = `${changeTimeZone(full_date, timezone_new).toUTCString().slice(5,16)}`
             document.querySelector('.done .time > input').value = `${changeTimeZone(full_date, timezone_new).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12:false})}`;
